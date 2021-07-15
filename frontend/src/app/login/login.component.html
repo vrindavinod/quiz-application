@@ -1,0 +1,52 @@
+<mat-toolbar color="primary" class="navbar">
+
+    <div>
+      <h3 class="logo">StuddictEd</h3>
+    </div>
+  
+  
+  </mat-toolbar>
+  
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <p class="login-text">LOGIN</p>
+          <div class="card text-center ">
+  
+            <form (ngSubmit)="onSubmit()">
+            <div class="card-body">
+              <div class="example-container">
+                <mat-form-field appearance="standard">
+                  <!-- <mat-label>Enter your email</mat-label> -->
+                  <input matInput placeholder="Enter your email" name="email" [(ngModel)]="user.username"required>
+                  <mat-error ></mat-error>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field appearance="standard">
+                  <!-- <mat-label>Enter your password</mat-label> -->
+                  <input matInput placeholder="Enter your password" [(ngModel)]="user.password" [type]="hide ? 'password' : 'text'"  name="password" >
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                </mat-form-field>
+              </div>
+              <button mat-raised-button class="login-btn" type="submit">Login</button>
+            </div>
+          </form>
+            <div class="card-footer text-muted">
+              Developed By Vrinda Vinod 
+            </div>
+          </div>
+        </div>
+  
+  
+        <div class="col-sm mt-5">
+          <img src="../../assets/loginb.svg" class="img-size">
+        </div>
+      </div>
+    </div>
+  </section>
+  

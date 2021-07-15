@@ -1,0 +1,66 @@
+.navbar{
+    justify-content: space-between;
+    background-color: #292b52;
+    width: 100%;
+  }
+  
+  .card
+  {
+    width: 500px;
+    margin-top: 80px !important;
+    overflow: hidden;
+  }
+  
+  mat-form-field
+  {
+    background-color: white !important;
+    width: 100%;
+  }
+  
+  
+  .example-container .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+  
+  .example-right-align {
+    text-align: right;
+  }
+  
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  input.example-right-align {
+    -moz-appearance: textfield;
+  }
+  
+  .img-size{
+    width: 550px;
+    height: 600px;
+  }
+  
+  
+  .login-text{
+    font-size: 90px;
+    font-weight: 100;
+    text-decoration-line: overline;
+    color: #260068;
+    margin-top: 100px;
+  }
+  
+  .login-btn{
+    background-color: #260068;
+    color: white;
+  }
+  
+    @media (max-width: 1200px) {
+  
+      .card{
+        width: 100%;
+      }
+      .img-size{
+        width: 100%;
+      }
+     }
+  

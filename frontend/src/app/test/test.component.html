@@ -1,0 +1,47 @@
+<app-nav-bar></app-nav-bar>
+<br>
+<div *ngIf='!this.showAnswer'>
+<div *ngIf='this.quiz'>
+<div class="container p-5">
+    <div class="row">
+        <div class="col-sm-8 offset-2">
+
+            <h1 class="text-center">{{quiz["questionPaperTitle"]}}</h1>
+            <p class="text-center">{{currentQuestion+1}} of {{quiz.questions.length}}</p>
+            <hr>
+            <!-- <div *ngFor="let q of quiz.questions;let j= index;"> -->
+            <!-- <h3>{{q.questionVal}}</h3> -->
+            <h1>
+            <div [innerHTML]="questionText"></div>
+        </h1>
+            <div *ngFor = "let o of quiz.questions[currentQuestion].options; let i = index;">
+                <li class="list-group-item" style="margin-bottom: 30 px;">
+                    <label>
+                    <input type="radio" name="{{quiz.questions[currentQuestion].questionVal}}" 
+                    (change)="onAnswer(o.is_correct)">
+                    {{o.optionVal}}
+                </label>
+                </li>
+            </div>
+            <!-- </div> -->
+            <br>
+            <button mat-button (click)="previous()">Previous</button>
+            <button mat-button (click)="next()" style="float: right;">Next</button>
+        </div>
+    </div>
+</div>
+<div *ngIf='this.showSubmit' class="text-center">
+<button mat-button (click)="completeTest()" style="color:white; background-color: rgb(2, 11, 144);">Submit</button>
+</div>
+</div>
+</div>
+<div class="container p-5">
+    <div class="col-sm-8 offset-2">
+<div *ngIf='this.showAnswer'>
+    <h1>Your Score is:{{totalScore}}/{{quiz.questions.length}}</h1>
+</div>
+</div>
+</div>
+<div *ngIf='this.quiz==undefined' class="container p-5">
+    <h1 style="padding-left: 30 px;">No New Tests have been uploaded yet..</h1>
+</div>

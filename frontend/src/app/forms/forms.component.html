@@ -1,0 +1,77 @@
+<app-nav-bar></app-nav-bar>
+
+<mat-card>
+  <form [formGroup]="questionsForm" fxLayout="column">
+    <mat-card-title>
+      <mat-form-field style="width: 300px;">
+        <input matInput type="text" formControlName="questionPaperTitle" placeholder="Title">
+      </mat-form-field>
+      
+    </mat-card-title>
+
+    <hr>
+    <div formArrayName="questions">
+      <div *ngFor="let questn of getQuestions().controls; let questionIndex=index">
+        <div [formGroupName]="questionIndex">
+          <div fxLayout="row">
+            <button mat-button color="warn" (click)="removeQuestion(questionIndex)" style="float: right;">Remove question</button>
+
+            <h2>Question No: {{questionIndex+1}}</h2>
+      
+            <ckeditor formControlName="questionVal"></ckeditor>
+            <br>
+            <button mat-button (click)="addOption(questionIndex)">Add more options</button>
+           <br>
+           <hr>
+          </div>
+
+          <div formArrayName="options" style="padding-left: 20px;">
+            <div *ngFor="let opt of getOptions(questionIndex).controls; let optionIndex=index">
+              <div [formGroupName]="optionIndex">
+                <div fxLayout="row">
+                  <mat-form-field appearance="outline" style="width: 280px;">
+                    <input matInput type="text" formControlName="optionVal" placeholder="Option">
+                  </mat-form-field>
+                  <input type="checkbox" formControlName="is_correct">
+                  <button mat-button color="warn" (click)="removeOption(questionIndex,optionIndex)">Remove
+                    option</button>
+                  <br>
+                  <button mat-button (click)="addAbility(questionIndex,optionIndex)">Add ability</button>
+                  
+                
+                </div>
+<br>
+
+                <div formArrayName="abilities" style="padding-left: 20px;">
+                  <div *ngFor="let abt of getAbilities(questionIndex,optionIndex).controls; let abilityIndex=index">
+                    <div [formGroupName]="abilityIndex">
+                      <div fxLayout="row">
+                        <mat-form-field appearance="outline" style="width: 260px;">
+                          <input matInput type="text" formControlName="abilityVal" placeholder="Ability">
+                        </mat-form-field>
+                        <button mat-button color="warn"
+                          (click)="removeAbility(questionIndex,optionIndex,abilityIndex)">Remove
+                          ability</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+        <hr>
+       
+      </div>
+      <div>
+        <button mat-button (click)="addQuestion()" style="background-color: rgb(102, 106, 151); color:white">Add Question</button>
+      </div>
+    </div>
+    <br>
+    <div>
+      <button mat-raised-button (click)="submitAllQuestions()" style="background-color: rgb(2, 11, 144); color:white" [disabled]="!questionsForm.valid">Start Test</button>
+    </div>
+  </form>
+</mat-card>
